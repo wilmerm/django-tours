@@ -1,0 +1,82 @@
+{% load i18n %}
+{% if tours.exists %}
+<link rel="stylesheet" href="{{ shepherd_css }}">
+<script src="{{ shepherd_js }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function tourFinish(on, url) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': '{{ csrf_token }}'
+      },
+      body: JSON.stringify({ on })
+    })
+    {% if DEBUG %}
+    .then(response => {
+      if (!response.ok) {
+          console.error(response);
+      }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+    {% endif %}
+  }
+
+  // {# --- Tours --- #}
+  {% for tour in tours %}
+    const tour{{ tour.pk }} = new Shepherd.Tour({
+      useModalOverlay: {% if tour.use_modal_overlay %}true{% else %}false{% endif %},
+      defaultStepOptions: {
+        cancelIcon: {
+          enabled: true
+        },
+        classes: 'shepherd-theme-custom',
+        scrollTo: { behavior: 'smooth', block: 'center' }
+      }
+    });
+    // {# --- Steps --- #}
+    {% for step in tour.steps.all %}
+    tour{{ tour.pk }}.addStep({
+      id: '{{ step.step_id }}',
+      title: `{{ step.title|safe }}`,
+      text: `{{ step.text|safe }}`,
+      attachTo: {
+        element: '{{ step.attach_to_selector }}',
+        on: '{{ step.attach_to_position|lower }}'
+      },
+      buttons: [
+        {
+          action() {
+            return this.back();
+          },
+          classes: 'shepherd-button-secondary',
+          text: '{% trans "back"|capfirst %}'
+        },
+        {
+          action() {
+            return this.next();
+          },
+          text: '{% trans "next"|capfirst %}'
+        }
+      ]
+    });
+    {% endfor %}
+    // {# --- End Steps --- #}
+    setTimeout(() => {
+      tour{{ tour.pk }}.start();
+    }, {{ tour.timeout }});
+
+    tour{{ tour.pk }}.on('complete', function() {
+      tourFinish('complete', '{% url "tour:complete_tour" pk=tour.pk %}');
+    });
+    tour{{ tour.pk }}.on('cancel', function() {
+      tourFinish('cancel', '{% url "tour:complete_tour" pk=tour.pk %}');
+    });
+  {% endfor %}
+  // {# --- End Tours --- #}
+});
+</script>
+{% endif %}
