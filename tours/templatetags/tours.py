@@ -3,7 +3,7 @@ from django.conf import settings
 from django.http.request import HttpRequest
 from django.db.models import Q
 
-from tours.models import Tour, TourStep, TourPage
+from tours.models import Tour, TourStep
 from tours.settings import TOUR_SHEPHERD_CSS, TOUR_SHEPHERD_JS
 
 

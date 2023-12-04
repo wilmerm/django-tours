@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100, unique=True, verbose_name='name')),
                 ('description', models.CharField(blank=True, max_length=200)),
-                ('url_names', models.CharField(blank=True, help_text='Comma separated list of url_name where you want it to be displayed. If not specified, it will be displayed on all pages.', max_length=500, verbose_name='view name')),
+                ('url_names', models.CharField(blank=True, help_text='Comma separated list of url_name where you want it to be displayed. If not specified, it will be displayed on all pages.', max_length=500, verbose_name='url names')),
                 ('show_only_staff', models.BooleanField(default=False, verbose_name='show only staff users')),
                 ('show_only_superuser', models.BooleanField(default=False, verbose_name='show only staff users')),
                 ('start_date', models.DateField(blank=True, null=True, verbose_name='start date')),
@@ -49,20 +49,6 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'tour step',
                 'verbose_name_plural': 'tour steps',
-            },
-        ),
-        migrations.CreateModel(
-            name='TourPage',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('view_name', models.CharField(max_length=100, unique=True, verbose_name='view name')),
-                ('view_args', models.JSONField(blank=True, default=list, verbose_name='view arguments')),
-                ('view_kwargs', models.JSONField(blank=True, default=dict, verbose_name='view keywords arguments')),
-                ('tour', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='pages', to='tours.tour', verbose_name='tour')),
-            ],
-            options={
-                'verbose_name': 'tour page',
-                'verbose_name_plural': 'tour pages',
             },
         ),
     ]

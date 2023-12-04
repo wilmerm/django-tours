@@ -1,6 +1,7 @@
 from django import forms
+from django.apps import apps
 
-from .models import Tour, TourStep, TourPage
+from .models import Tour, TourStep
 
 
 class TourForm(forms.ModelForm):
@@ -9,18 +10,24 @@ class TourForm(forms.ModelForm):
         fields = (
             'name',
             'description',
+            'url_names',
             'show_only_staff',
             'show_only_superuser',
             'start_date',
             'end_date',
             'is_active',
         )
+        widgets = {
+            'description': forms.Textarea(),
+            'url_names': forms.Textarea(),
+        }
 
 
 class TourStepForm(forms.ModelForm):
     class Meta:
         model = TourStep
         fields = (
+            'tour',
             'step_id',
             'title',
             'text',
@@ -29,21 +36,8 @@ class TourStepForm(forms.ModelForm):
         )
 
     def __init__(self, *args, **kwargs):
-        tour = kwargs.pop('tour')
         super().__init__(*args, **kwargs)
-        self.instance.tour = tour
 
-
-class TourPageForm(forms.ModelForm):
-    class Meta:
-        model = TourPage
-        fields = (
-            'view_name',
-            'view_args',
-            'view_kwargs'
-        )
-
-    def __init__(self, *args, **kwargs):
-        tour = kwargs.pop('tour')
-        super().__init__(*args, **kwargs)
-        self.instance.tour = tour
+        if apps.is_installed('tinymce'):
+            from tinymce.widgets import TinyMCE
+            self.fields['text'].widget = TinyMCE()

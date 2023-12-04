@@ -1,9 +1,11 @@
 from django.contrib import admin
 
-from .models import Tour, TourStep, TourPage
+from .forms import TourForm, TourStepForm
+from .models import Tour, TourStep
 
 
 class TourAdmin(admin.ModelAdmin):
+    form = TourForm
     list_display = (
         'name',
         'show_only_staff',
@@ -29,6 +31,7 @@ class TourAdmin(admin.ModelAdmin):
 
 
 class TourStepAdmin(admin.ModelAdmin):
+    form = TourStepForm
     list_display = (
         'step_id',
         'tour',
@@ -45,20 +48,5 @@ class TourStepAdmin(admin.ModelAdmin):
     )
 
 
-class TourPageAdmin(admin.ModelAdmin):
-    list_display = (
-        'view_name',
-        'tour',
-    )
-    list_filter = (
-        'view_name',
-        'tour',
-    )
-    search_fields = (
-        'view_name',
-    )
-
-
 admin.site.register(Tour, TourAdmin)
 admin.site.register(TourStep, TourStepAdmin)
-admin.site.register(TourPage, TourPageAdmin)

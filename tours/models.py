@@ -17,7 +17,7 @@ class Tour(models.Model):
         blank=True,
     )
     url_names = models.CharField(
-        _l('view name'),
+        _l('url names'),
         max_length=500,
         blank=True,
         help_text=_l('Comma separated list of url_name where you want it to be '
@@ -111,34 +111,3 @@ class TourStep(models.Model):
 
     def __str__(self):
         return '%s %s' % (self._meta.verbose_name.capitalize(), self.step_id)
-
-
-class TourPage(models.Model):
-    tour = models.ForeignKey(
-        Tour,
-        on_delete=models.CASCADE,
-        related_name='pages',
-        verbose_name=_l('tour'),
-    )
-    view_name = models.CharField(
-        _l('view name'),
-        max_length=100,
-        unique=True,
-    )
-    view_args = models.JSONField(
-        _l('view arguments'),
-        default=list,
-        blank=True,
-    )
-    view_kwargs = models.JSONField(
-        _l('view keywords arguments'),
-        default=dict,
-        blank=True,
-    )
-
-    class Meta:
-        verbose_name = _l('tour page')
-        verbose_name_plural = _l('tour pages')
-
-    def __str__(self):
-        return '%s %s' % (self._meta.verbose_name.capitalize(), self.view_name)

@@ -17,7 +17,7 @@ install_requires = [
 
 setup(
     name='django-tours',
-    version='0.0.3',
+    version='0.0.4',
     author='Wilmer Martinez',
     author_email='info@wilmermartinez.dev',
     description='Django app to display tours with shepherdjs',
