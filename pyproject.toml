@@ -1,17 +1,17 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools >= 61.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-tours"
-version = "0.0.5"
+version = "0.0.6"
 authors = [
   { name = "Wilmer Martinez", email = "info@wilmermartinez.dev" }
 ]
 description = "Django app to display tours with shepherdjs"
 readme = "README.md"
+license = {file = "LICENCE"}
 requires-python = ">=3.8"
-license = "MIT"
 classifiers = [# https://pypi.org/classifiers/
 
     # "Development Status :: 1 - Planning",
@@ -63,8 +63,13 @@ classifiers = [# https://pypi.org/classifiers/
 dependencies = [
   "Django>=3.2",
 ]
+keywords = [
+  "django",
+  "tours",
+  "shepherdjs"
+]
 
 [project.urls]
 Homepage = "https://github.com/wilmerm/django-tours"
 Issues = "https://github.com/wilmerm/django-tours/issues"
-Source = "https://github.com/wilmerm/django-tours"
+Repository = "https://github.com/wilmerm/django-tours"
