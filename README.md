@@ -2,6 +2,8 @@
 
 Django app to display tours with shepherdjs
 
+![Python Logo](https://www.python.org/static/community_logos/python-logo.png "Sample inline image")
+
 ## Instalation
 
 ```bash
@@ -57,10 +59,9 @@ python manage.py migrate
 {% load_tours request %}
 ```
 
-
 ## Licence
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) file for details.
 
 ## Proyect Status
 

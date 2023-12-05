@@ -4,7 +4,7 @@ from django.http.request import HttpRequest
 from django.db.models import Q
 
 from tours.models import Tour, TourStep
-from tours.settings import TOUR_SHEPHERD_CSS, TOUR_SHEPHERD_JS
+from tours.settings import TOURS_SHEPHERD_CSS, TOURS_SHEPHERD_JS
 
 
 register = template.Library()
@@ -37,7 +37,7 @@ def load_tours(request: HttpRequest):
         return {
             'request': request,
             'tours': tours,
-            'shepherd_css': TOUR_SHEPHERD_CSS,
-            'shepherd_js': TOUR_SHEPHERD_JS,
+            'shepherd_css': TOURS_SHEPHERD_CSS,
+            'shepherd_js': TOURS_SHEPHERD_JS,
             'DEBUG': settings.DEBUG,
         }
