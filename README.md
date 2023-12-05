@@ -1,8 +1,10 @@
 # django-tours
 
-Django app to display tours with shepherdjs
+Django app to display tours with [shepherdjs](https://shepherdjs.dev/) 
 
 ![Python Logo](https://www.python.org/static/community_logos/python-logo.png "Sample inline image")
+
+![django-tours-1](https://github.com/wilmerm/django-tours/assets/44853160/d7a8c20f-ddb1-4f93-b287-e143813aef95)
 
 ## Instalation
 
