@@ -1,0 +1,25 @@
+{% load tours %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>django-tours</title>
+</head>
+<body>
+  <div style="text-align: center; margin-top: 32px; margin-bottom: 64px">
+    <button id="red" style="background-color: #ff000080; border: 0; padding: 16px; width: 150px; margin-right: 16px">#red</button>
+    <button id="green" style="background-color: #00ff0080; border: 0; padding: 16px; width: 150px; margin-right: 16px">#green</button>
+    <button id="blue" style="background-color: #0000ff80; border: 0; padding: 16px; width: 150px">#blue</button>
+  </div>
+  <div style="text-align: center; margin-bottom: 64px">
+    <button id="yellow" style="background-color: #ffff0080; border: 0; padding: 16px; width: 150px; margin-right: 16px">#yellow</button>
+    <button id="cyan" style="background-color: #00ffff80; border: 0; padding: 16px; width: 150px; margin-right: 16px">#cyan</button>
+    <button id="pink" style="background-color: #ff00ff80; border: 0; padding: 16px; width: 150px">#pink</button>
+  </div>
+  <div style="text-align: center; margin-bottom: 64px">
+    <a href="{% url 'admin:tours_tourstep_add' %}" target="_blank">Create tour</a>
+  </div>
+</body>
+{% load_tours request %}
+</html>

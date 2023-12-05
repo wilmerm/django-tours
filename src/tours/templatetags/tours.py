@@ -10,7 +10,7 @@ from tours.settings import TOURS_SHEPHERD_CSS, TOURS_SHEPHERD_JS
 register = template.Library()
 
 
-@register.inclusion_tag('tours/tags/tour.html')
+@register.inclusion_tag('tours/tags/tours.html')
 def load_tours(request: HttpRequest):
     resolver_match = getattr(request, 'resolver_match', None)
 

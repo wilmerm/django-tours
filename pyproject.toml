@@ -1,16 +1,16 @@
 [build-system]
-requires = ["setuptools >= 61.0", "wheel"]
+requires = ["setuptools >= 61.0", "wheel", "django"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-tours"
-version = "0.0.6"
+version = "0.0.7"
 authors = [
   { name = "Wilmer Martinez", email = "info@wilmermartinez.dev" }
 ]
 description = "Django app to display tours with shepherdjs"
 readme = "README.md"
-license = {file = "LICENCE"}
+license = {file = "LICENSE"}
 requires-python = ">=3.8"
 classifiers = [# https://pypi.org/classifiers/
 

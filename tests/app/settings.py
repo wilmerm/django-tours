@@ -1,8 +1,15 @@
+DEBUG = True
 SECRET_KEY = "Thanks for using django-tours"
+ALLOWED_HOSTS = ['*']
 
 USE_TZ = True
 
-DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}}
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "db.sqlite3"
+    }
+}
 
 INSTALLED_APPS = (
     # Default Django apps
@@ -12,10 +19,13 @@ INSTALLED_APPS = (
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.gis",
-    # Our tests
-    "tours",
+
     "tests",
+
+    # 1. `python -m build`
+    # 2. `pip uninstall django-tours`
+    # 3. `pip install dist/django-tours-VERSION.tar.gz` or `pip install dist/*tar.gz`
+    "tours",
 )
 
 ROOT_URLCONF = "tests.app.urls"
