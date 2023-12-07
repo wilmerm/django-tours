@@ -28,7 +28,7 @@ class Tour(models.Model):
         default=False,
     )
     show_only_superuser = models.BooleanField(
-        _l('show only staff users'),
+        _l('show only superusers'),
         default=False,
     )
     start_date = models.DateField(
