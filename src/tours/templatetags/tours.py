@@ -12,11 +12,9 @@ register = template.Library()
 
 @register.inclusion_tag('tours/tags/tours.html')
 def load_tours(request: HttpRequest):
-    resolver_match = getattr(request, 'resolver_match', None)
+    url_name = getattr(getattr(request, 'resolver_match', None), 'url_name', None)
 
-    if resolver_match is not None:
-        url_name = resolver_match.url_name
-
+    if url_name:
         # Filter active tours related to the current view
         tours = Tour.objects.filter(
             Q(url_names='') |
