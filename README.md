@@ -8,7 +8,7 @@ Django app to display tours with [shepherdjs](https://shepherdjs.dev/)
 
 ## Instalation
 
-```bash
+```sh
 pip install django-tours
 ```
 
@@ -49,7 +49,7 @@ urlpatterns = [
 
 ### Run the migrations
 
-```py
+```sh
 python manage.py migrate
 ```
 
@@ -67,7 +67,7 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) file for 
 
 ## Proyect Status
 
-This project is under development
+This project is in Production/Stable ✔
 
 ## Contribution 💗
 
