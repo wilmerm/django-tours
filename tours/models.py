@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.utils.translation import gettext as _, gettext_lazy as _l
 from django.contrib.auth import get_user_model
@@ -6,7 +8,19 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class Tour(models.Model):
+class BaseModel(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+        unique=True,
+    )
+
+    class Meta:
+        abstract = True
+
+
+class Tour(BaseModel):
     name = models.CharField(
         _l('name'),
         max_length=100,
@@ -53,7 +67,6 @@ class Tour(models.Model):
     users_shown = models.ManyToManyField(
         User,
         verbose_name=_l('users shown'),
-        editable=False,
     )
 
     class Meta:
@@ -64,7 +77,7 @@ class Tour(models.Model):
         return self.name
 
 
-class TourStep(models.Model):
+class TourStep(BaseModel):
     POSITION_TOP = 'TOP'
     POSITION_BOTTOM = 'BOTTOM'
     POSITION_LEFT = 'LEFT'
