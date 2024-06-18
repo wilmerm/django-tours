@@ -6,6 +6,19 @@ from .models import Tour, TourStep
 
 class TourAdmin(admin.ModelAdmin):
     form = TourForm
+    fields = (
+        'name',
+        'description',
+        'url_names',
+        'show_only_staff',
+        'show_only_superuser',
+        'start_date',
+        'end_date',
+        'timeout',
+        'use_modal_overlay',
+        'is_active',
+        'users_shown',
+    )
     list_display = (
         'name',
         'show_only_staff',
@@ -21,9 +34,6 @@ class TourAdmin(admin.ModelAdmin):
         'end_date',
         'is_active',
     )
-    readonly_fields = (
-        'users_shown',
-    )
     search_fields = (
         'name__icontains',
         'description__icontains',
@@ -33,9 +43,9 @@ class TourAdmin(admin.ModelAdmin):
 class TourStepAdmin(admin.ModelAdmin):
     form = TourStepForm
     list_display = (
+        'title',
         'step_id',
         'tour',
-        'title',
     )
     list_filter = (
         'tour',
