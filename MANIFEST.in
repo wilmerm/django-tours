@@ -1,1 +1,1 @@
-recursive-include src/tours/templates *
+recursive-include tours/templates *

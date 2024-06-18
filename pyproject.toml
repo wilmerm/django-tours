@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-tours"
-version = "1.0.5"
+version = "1.1.1"
 authors = [
   { name = "Wilmer Martinez", email = "info@wilmermartinez.dev" }
 ]
@@ -49,6 +49,7 @@ classifiers = [# https://pypi.org/classifiers/
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 
     "Framework :: Django :: 3",
     "Framework :: Django :: 3.0",
@@ -66,10 +67,10 @@ dependencies = [
 keywords = [
   "django",
   "tours",
-  "shepherdjs"
+  "shepherdjs",
 ]
 
 [project.urls]
-Homepage = "https://github.com/wilmerm/django-tours"
+Homepage = "https://wilmermartinez.dev/codigos/django-tours/"
 Issues = "https://github.com/wilmerm/django-tours/issues"
 Repository = "https://github.com/wilmerm/django-tours"
